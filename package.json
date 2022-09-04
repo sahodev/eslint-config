@@ -1,0 +1,43 @@
+{
+  "name": "@sahodev/eslint-config-sahodev",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "keywords": [
+    "eslint",
+    "eslintcofig"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahodev/eslint-config.git"
+  },
+  "author": "sahodev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sahodev/eslint-config/issues"
+  },
+  "homepage": "https://github.com/sahodev/eslint-config#readme",
+  "peerDependencies": {
+    "eslint": ">=8.23.0",
+    "prettier": ">=2.7.1",
+    "react": ">=18.2.0",
+    "typescript": ">=4.8.2"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.0.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier-plugin-organize-imports": "^3.1.1",
+    "prettier-plugin-packagejson": "^2.2.18"
+  }
+}

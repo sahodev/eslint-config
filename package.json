@@ -1,7 +1,7 @@
 {
   "name": "@sahodev/eslint-config-sahodev",
-  "version": "1.0.0",
-  "description": "TBD",
+  "version": "1.0.1",
+  "description": "Base ESlint config",
   "keywords": [
     "eslint",
     "eslintcofig"

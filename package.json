@@ -2,29 +2,23 @@
   "name": "@sahodev/eslint-config-sahodev",
   "version": "1.0.0",
   "description": "TBD",
-  "main": "index.js",
   "keywords": [
     "eslint",
     "eslintcofig"
   ],
-  "scripts": {},
+  "homepage": "https://github.com/sahodev/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/sahodev/eslint-config/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sahodev/eslint-config.git"
   },
-  "author": "sahodev",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sahodev/eslint-config/issues"
-  },
-  "homepage": "https://github.com/sahodev/eslint-config#readme",
-  "peerDependencies": {
-    "eslint": ">=8.23.0",
-    "prettier": ">=2.7.1",
-    "react": ">=18.0.0",
-    "typescript": ">=4.8.2"
-  },
-  "devDependencies": {
+  "author": "sahodev",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -39,5 +33,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier-plugin-organize-imports": "^3.1.1",
     "prettier-plugin-packagejson": "^2.2.18"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.23.0",
+    "prettier": ">=2.7.1",
+    "react": ">=18.0.0",
+    "typescript": ">=4.8.2"
   }
 }

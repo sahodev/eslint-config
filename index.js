@@ -93,4 +93,16 @@ module.exports = {
       version: "18.2.0",
     },
   },
+  },
+  "overrides": [
+    // Files named [something]Route allow default exports
+    // This is because lazy loading only works with default exports
+    {
+      "files": "**/*Route.tsx",
+      "rules": {
+        "import/prefer-default-export": "error",
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 };

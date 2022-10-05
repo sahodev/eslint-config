@@ -1,4 +1,4 @@
-on: [push]
+on: push
 name: Build and Publish
 env:
   NODE_VERSION: 16.x

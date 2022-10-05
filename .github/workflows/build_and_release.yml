@@ -29,3 +29,10 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         commit-message: 'CI: bump version to {{version}}'
+    - name: Checkout again
+    - uses: actions/checkout@v3
+    - name: Publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      run:
+        npm publish

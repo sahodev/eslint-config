@@ -1,11 +1,11 @@
 on: push
-name: Build and publish
+name: Build and release
 env:
   NODE_VERSION: 16.x
 
 jobs:
-  build:
-    name: Build
+  build-and-release:
+    name: Build and Release
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
     steps:
@@ -29,28 +29,3 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         commit-message: 'CI: bump version to {{version}}'
-  publish:
-    name: Publish
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Checkout
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{env.NODE_VERSION}}
-        registry-url: https://registry.npmjs.org/
-    - name: Cache node_modules
-      id: cache-modules
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: ${{env.NODE_VERSION}}-${{runner.OS}}-build-${{hashFiles('package.json')}}
-    - name: Build
-      if: steps.cache-modules.outputs.cache-hit != 'true'
-      run: npm install
-    - name: Publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      run:
-        npm publish

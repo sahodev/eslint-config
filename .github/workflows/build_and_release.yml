@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{env.NODE_VERSION}}
+        registry-url: https://registry.npmjs.org/
     - name: Cache node_modules
       id: cache-modules
       uses: actions/cache@v3
@@ -29,12 +30,17 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         commit-message: 'CI: bump version to {{version}}'
+    - name: Publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      run:
+        npm publish
         
   publish:
     name: Publish
     needs: build-and-release
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    if: github.event_name == 'push' && false && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
     steps:
     - uses: actions/checkout@v3
     - name: Checkout

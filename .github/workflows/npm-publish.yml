@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ $NODE_VERSION }}
+    - name: Use Node.js ${{ env.$NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ $NODE_VERSION }}
+        node-version: ${{ env.$NODE_VERSION }}
     - name: Cache node_modules
       id: cache-modules
       uses: actions/cache@v1
       with:
         path: node_modules
-        key: ${{ $NODE_VERSION }}-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+        key: ${{ env.$NODE_VERSION }}-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
     - name: Build
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: npm install

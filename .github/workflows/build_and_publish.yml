@@ -31,6 +31,7 @@ jobs:
         commit-message: 'CI: bump version to {{version}}'
   publish:
     name: Publish
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

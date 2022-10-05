@@ -34,12 +34,23 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{env.NODE_VERSION}}
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{env.NODE_VERSION}}
+        registry-url: https://registry.npmjs.org/
+    - name: Cache node_modules
+      id: cache-modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{env.NODE_VERSION}}-${{runner.OS}}-build-${{hashFiles('package.json')}}
+    - name: Build
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: npm install
+    - name: Publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    - run:
+        npm publish

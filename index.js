@@ -65,6 +65,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": true }]
     // import
     "import/extensions": [
       "error",

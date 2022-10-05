@@ -4,13 +4,13 @@ env:
   NODE_VERSION: 16.x
 
 jobs:
-  build_and_publish:
-    name: Build & Publish
+  build_and_increment_version:
+    name: Build & Increment version
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Checkout
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
@@ -23,8 +23,9 @@ jobs:
     - name: Build
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: npm install
-    - name: Publish
-      uses: mikeal/merge-release@master
+    - name:  Automated Version Bump
+      uses:  phips28/gh-action-bump-version@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      with:
+        commit-message: 'CI: bump version to {{version}} [skip ci]'

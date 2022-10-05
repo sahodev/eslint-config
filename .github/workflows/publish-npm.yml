@@ -9,7 +9,8 @@ on:
     - '*'    
 
 jobs:
-  publish-npm:
+  publish-npm-package:
+    name: Publish NPM package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

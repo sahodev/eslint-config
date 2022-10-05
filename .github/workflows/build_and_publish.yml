@@ -7,26 +7,26 @@ jobs:
   build_and_publish:
     name: Build & Publish
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
     steps:
     - uses: actions/checkout@v3
     - name: Checkout
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: ${{env.NODE_VERSION}}
     - name: Cache node_modules
       id: cache-modules
       uses: actions/cache@v3
       with:
         path: node_modules
-        key: ${{ env.NODE_VERSION }}-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+        key: ${{env.NODE_VERSION}}-${{runner.OS}}-build-${{hashFiles('package.json')}}
     - name: Build
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: npm install
     - name:  Automated Version Bump
       uses:  phips28/gh-action-bump-version@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         commit-message: 'CI: bump version to {{version}}'
     - name: Publish

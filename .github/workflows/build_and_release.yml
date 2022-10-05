@@ -41,6 +41,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{env.NODE_VERSION}}
+        registry-url: https://registry.npmjs.org/
     - name: Cache node_modules
       id: cache-modules
       uses: actions/cache@v3
@@ -52,6 +53,6 @@ jobs:
       run: npm install
     - name: Publish
       env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       run:
         npm publish

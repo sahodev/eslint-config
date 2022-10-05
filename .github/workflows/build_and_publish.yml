@@ -1,11 +1,11 @@
 on: push
-name: Build and increment version
+name: Build and publish
 env:
   NODE_VERSION: 16.x
 
 jobs:
-  build_and_increment_version:
-    name: Build & Increment version
+  build_and_publish:
+    name: Build & Publish
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
     steps:
@@ -29,3 +29,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         commit-message: 'CI: bump version to {{version}}'
+    - name: Publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}

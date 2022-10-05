@@ -1,5 +1,5 @@
 on: push
-name: Build and Publish
+name: Build and increment version
 env:
   NODE_VERSION: 16.x
 

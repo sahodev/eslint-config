@@ -4,9 +4,10 @@ env:
   NODE_VERSION: 16.x
 
 jobs:
-  build:
-    name: Build
+  build_and_publish:
+    name: Build & Publish
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ env.NODE_VERSION }}
@@ -22,12 +23,6 @@ jobs:
     - name: Build
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: npm install
-  publish:
-    name: Publish
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
-    steps:    
     - name: Publish
       uses: mikeal/merge-release@master
       env:

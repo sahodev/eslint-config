@@ -24,7 +24,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:promise/recommended",
   ],
-  plugins: ["react", "jsx-a11y", "import", "@typescript-eslint"],
+  plugins: ["react", "jsx-a11y", "import", "@typescript-eslint", "no-relative-import-paths"],
   globals: {},
   rules: {
     // prettier
@@ -98,7 +98,13 @@ module.exports = {
         tsx: "never",
       },
     ],
-    "no-relative-import-paths/no-relative-import-paths": "error",
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      {
+        "rootDir": "src",
+        "prefix": "@"
+      }
+    ]
   },
   settings: {
     "import/resolver": {

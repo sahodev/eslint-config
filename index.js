@@ -77,6 +77,7 @@ module.exports = {
         tsx: "never",
       },
     ],
+    "no-relative-import-paths/no-relative-import-paths": "error",
   },
   settings: {
     "import/resolver": {

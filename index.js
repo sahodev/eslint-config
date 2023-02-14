@@ -58,6 +58,26 @@ module.exports = {
       "error",
       { props: true, ignorePropertyModificationsFor: ["state", "draft"] },
     ],
+    // Allow for..in and for..of
+    'no-restricted-syntax': [
+      'error',
+      // {
+      //   selector: 'ForInStatement',
+      //   message: 'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+      // },
+      // {
+      //   selector: 'ForOfStatement',
+      //   message: 'iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.',
+      // },
+      {
+        selector: 'LabeledStatement',
+        message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+      },
+      {
+        selector: 'WithStatement',
+        message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+      },
+    ],
     // React
     "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
     "react/prop-types": ["off", {}],
@@ -65,6 +85,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": true }],
     // import
     "import/extensions": [
       "error",
@@ -94,4 +115,15 @@ module.exports = {
       version: "18.2.0",
     },
   },
+  "overrides": [
+    // Files named [something]Route allow default exports
+    // This is because lazy loading only works with default exports
+    {
+      "files": "**/*Route.tsx",
+      "rules": {
+        "import/prefer-default-export": "error",
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 };

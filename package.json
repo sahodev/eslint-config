@@ -1,6 +1,6 @@
 {
   "name": "@sahodev/eslint-config-sahodev",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "Base ESlint config",
   "keywords": [
     "eslint",
@@ -39,6 +39,6 @@
     "eslint": ">=8.23.0",
     "prettier": ">=2.7.1",
     "react": ">=18.0.0",
-    "typescript": ">=4.8.2"
+    "typescript": ">=4.8.0"
   }
 }

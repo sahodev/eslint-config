@@ -32,7 +32,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.5",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier-plugin-organize-imports": "^3.1.1",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.3"
   },
   "peerDependencies": {

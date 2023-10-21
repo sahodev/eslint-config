@@ -1,6 +1,6 @@
 {
   "name": "@sahodev/eslint-config-sahodev",
-  "version": "1.1.49",
+  "version": "1.1.50",
   "description": "Base ESlint config",
   "keywords": [
     "eslint",
